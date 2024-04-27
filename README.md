@@ -3,6 +3,10 @@
 Documentação das funcionalidades (Postman) :
 https://drive.google.com/drive/folders/1iGwyabrhPAVyBxpnW8Yq1pzn2fbmbZyu?usp=sharing
 
+## Diagrama de classes :
+![Diagrama](https://github.com/im2back/Teste-Tecnico-attus-/assets/117541466/5133d2e1-27b1-4271-bd5b-7a71f3d000cd)
+
+
 ## Funcionalidades :
 ![image](https://github.com/im2back/Teste-Tecnico-attus-/assets/117541466/a2e1d575-afb1-4098-a40d-41cf01321b44)
 
