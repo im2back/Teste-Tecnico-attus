@@ -4,7 +4,11 @@ import java.time.LocalDate;
 
 import com.example.challenger.Challenger.model.pessoa.Pessoa;
 
+import jakarta.validation.constraints.NotNull;
+
 public record PessoaEditarDadosPessoaisDto(
+		
+		@NotNull
 		Long id,
 		
 		String nomeCompleto,

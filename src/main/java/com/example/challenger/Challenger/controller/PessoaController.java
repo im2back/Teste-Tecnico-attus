@@ -19,6 +19,8 @@ import com.example.challenger.Challenger.model.pessoa.dto.PessoaDto;
 import com.example.challenger.Challenger.model.pessoa.dto.PessoaEditarDadosPessoaisDto;
 import com.example.challenger.Challenger.service.PessoaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("pessoa")
 public class PessoaController {
@@ -41,7 +43,7 @@ public class PessoaController {
 	}
 	
 	@PostMapping("cadastro")
-	public ResponseEntity<List<Pessoa>> cadastroPessoas(@RequestBody List<PessoaCadastroDto> dto){
+	public ResponseEntity<List<Pessoa>> cadastroPessoas(@Valid @RequestBody List<PessoaCadastroDto> dto){
 		var response = service.cadastrarPessoas(dto);
 		 	return ResponseEntity.created(URI.create("/pessoa/listar-todos")).body(response);
 	}
@@ -49,7 +51,7 @@ public class PessoaController {
 	
 	@PutMapping("editar")
 	public ResponseEntity<List<PessoaEditarDadosPessoaisDto>> editarPessoas(@RequestBody List<PessoaDto> dto){
-		var response = service.editar(dto);
+		var response = service.editarPessoas(dto);
 			return ResponseEntity.ok(response);
 	}
 	

@@ -12,6 +12,7 @@ import com.example.challenger.Challenger.model.endereco.Endereco;
 import com.example.challenger.Challenger.model.endereco.dto.EnderecoCadastroDto;
 import com.example.challenger.Challenger.model.endereco.dto.EnderecoDto;
 import com.example.challenger.Challenger.repository.EnderecoRepository;
+import com.example.challenger.Challenger.service.exceptions.ResourceNotFound;
 
 @Service
 public class EnderecoService {
@@ -26,7 +27,7 @@ public class EnderecoService {
 	public Endereco buscarEnderecoPorId(Long id) {
 
 		return repository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Endereco n'ao encontrado para o ID: " + id));
+				.orElseThrow(() -> new ResourceNotFound(id));
 	}
 
 	@Transactional(readOnly = true)
@@ -42,21 +43,7 @@ public class EnderecoService {
 		List<EnderecoDto> response = lista.stream().map(EnderecoDto::new).collect(Collectors.toList());
 		return response;
 	}
-
-	@Transactional
-	public List<Endereco> editarEndereco(List<EnderecoDto> listaDto) {
-
-		List<Endereco> response = new ArrayList<>();
-
-		for (EnderecoDto e : listaDto) {
-			Endereco endereco = buscarEnderecoPorId(e.idEndereco());
-			endereco.updateEndereco(e);
-			repository.save(endereco);
-			response.add(endereco);
-		}
-		return response;
-	}
-
+	
 	@Transactional
 	public List<EnderecoDto> criarEndereco(List<EnderecoCadastroDto> dto) {
 
@@ -69,7 +56,19 @@ public class EnderecoService {
 
 		List<EnderecoDto> responseList = listaEntidades.stream().map(EnderecoDto::new).collect(Collectors.toList());
 		return responseList;
-
 	}
 
+	@Transactional
+	public List<EnderecoDto> editarEndereco(List<EnderecoDto> listaDto) {
+
+		List<EnderecoDto> response = new ArrayList<>();
+
+		for (EnderecoDto e : listaDto) {
+			Endereco endereco = buscarEnderecoPorId(e.idEndereco());
+			endereco.updateEndereco(e);
+			repository.save(endereco);
+			response.add(new EnderecoDto(endereco));
+		}
+		return response;
+	}
 }

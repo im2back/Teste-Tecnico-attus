@@ -13,6 +13,7 @@ import com.example.challenger.Challenger.model.pessoa.dto.PessoaCadastroDto;
 import com.example.challenger.Challenger.model.pessoa.dto.PessoaDto;
 import com.example.challenger.Challenger.model.pessoa.dto.PessoaEditarDadosPessoaisDto;
 import com.example.challenger.Challenger.repository.PessoaRepository;
+import com.example.challenger.Challenger.service.exceptions.ResourceNotFound;
 
 @Service
 public class PessoaService {
@@ -22,8 +23,7 @@ public class PessoaService {
 	
 	@Transactional(readOnly = true)
 	public Pessoa buscarPessoaPorId(Long id) {
-		return repository.findById(id)
-				.orElseThrow(() -> new RuntimeException("Pessoa não encontrada com ID: " + id));
+		return repository.findById(id).orElseThrow(() -> new ResourceNotFound(id));
 	}
 	
 	@Transactional(readOnly = true)
@@ -51,7 +51,7 @@ public class PessoaService {
 	}
 	
 	@Transactional
-	public List<PessoaEditarDadosPessoaisDto> editar(List<PessoaDto> listaDto) {
+	public List<PessoaEditarDadosPessoaisDto> editarPessoas(List<PessoaDto> listaDto) {
 		
 		List<PessoaEditarDadosPessoaisDto> response = new ArrayList<>();
 		

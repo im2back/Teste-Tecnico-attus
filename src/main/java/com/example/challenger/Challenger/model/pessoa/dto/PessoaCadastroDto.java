@@ -5,9 +5,15 @@ import java.util.List;
 
 import com.example.challenger.Challenger.model.endereco.Endereco;
 
-public record PessoaCadastroDto(
-		String nomeCompleto,
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
+public record PessoaCadastroDto(
+		
+		@NotNull
+		@Size(min = 5)
+		String nomeCompleto,
+		
 		LocalDate dataNascimento,
 		
 		List<Endereco> endereco

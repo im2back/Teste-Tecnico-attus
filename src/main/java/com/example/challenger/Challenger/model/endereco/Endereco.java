@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,6 +24,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_endereco")
+@EqualsAndHashCode(of="id")
 public class Endereco {
 
 	@Id
@@ -64,10 +66,7 @@ public class Endereco {
 		this.pessoa = null;
 	}
 	
-	
-	
-	
-	
+		
 	public void updateEndereco(EnderecoDto dto) {
 	    if (dto.cep() != null) {
 	        this.setCep(dto.cep());

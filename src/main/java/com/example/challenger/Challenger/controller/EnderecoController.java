@@ -49,7 +49,7 @@ public class EnderecoController {
 	}
 	
 	@PutMapping("atualizar")
-	public ResponseEntity<?> atualizarEndereco(@RequestBody List<EnderecoDto> dto){
+	public ResponseEntity<List<EnderecoDto>> atualizarEndereco(@RequestBody List<EnderecoDto> dto){
 		var response = service.editarEndereco(dto);
 		return ResponseEntity.ok(response);
 	}

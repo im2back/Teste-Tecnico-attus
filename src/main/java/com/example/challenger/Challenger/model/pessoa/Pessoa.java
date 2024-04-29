@@ -1,7 +1,6 @@
 package com.example.challenger.Challenger.model.pessoa;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.example.challenger.Challenger.model.endereco.Endereco;
@@ -15,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,6 +25,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
+@EqualsAndHashCode(of="id")
 public class Pessoa {
 
 	@Id
@@ -57,6 +58,5 @@ public class Pessoa {
 	}
 	
 
-	
 	
 }
