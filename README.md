@@ -3,6 +3,10 @@
 Documentação das funcionalidades (Postman) :
 https://drive.google.com/drive/folders/1iGwyabrhPAVyBxpnW8Yq1pzn2fbmbZyu?usp=sharing
 
+## Resultado do SonarQube (Cobertura de testes):
+![image](https://github.com/im2back/Teste-Tecnico-attus-/assets/117541466/04828730-947a-4b5f-8644-0c6760d452d3)
+
+
 ## Diagrama de classes :
 ![Diagrama](https://github.com/im2back/Teste-Tecnico-attus-/assets/117541466/5133d2e1-27b1-4271-bd5b-7a71f3d000cd)
 
